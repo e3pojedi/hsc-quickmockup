@@ -121,15 +121,61 @@
         </form>
       </div>
 
+
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
+
+ <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Label Yourself</ng-template>
+
+      <mat-form-field class="example-chip-list">
+  <mat-chip-list #chipList>
+    <mat-chip
+      *ngFor="let fruit of fruits"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(fruit)">
+      {{fruit}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="Describe how you're feeling"
+      #fruitInput
+      [formControl]="fruitCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+      {{fruit}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
+    <div class="register-but" routerLink="/oldhome" (click)="onSubmit()">
+  <button fxFlex mat-raised-button>submit</button>
+</div>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
@@ -137,6 +183,4 @@
   </mat-step>
 </mat-horizontal-stepper>
 
-<div class="register-but" routerLink="/oldhome" (click)="onSubmit()">
-  <button fxFlex mat-raised-button>submit</button>
-</div>
+

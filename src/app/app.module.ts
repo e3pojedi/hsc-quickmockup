@@ -135,6 +135,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
+    BrowserModule, FormsModule, MatChipsModule, BrowserAnimationsModule,MatInputModule,
     // ROUTING
     RouterModule.forRoot(
       appRoutes
