@@ -69,6 +69,7 @@ import { BinarysortComponent } from "./binarysort/binarysort.component";
 import { FeelingsCheckupComponent } from "./feelings-checkup/feelings-checkup.component";
 import { OldHomeComponent } from "./old-home/old-home.component";
 import { FeelingsCheckupPt2Component } from "./feelings-checkup-pt2/feelings-checkup-pt2.component";
+import { FeelingsFeedbackComponent } from './feelings-feedback/feelings-feedback.component';
 
 // ROUTING
 const appRoutes: Routes = [
@@ -90,6 +91,7 @@ const appRoutes: Routes = [
   { path: "binarysort", component: BinarysortComponent },
   { path: "feelingscheckup", component: FeelingsCheckupComponent },
   { path: "feelingscheckup2", component: FeelingsCheckupPt2Component },
+  { path: "feelingsfeedback", component: FeelingsFeedbackComponent },
 
   { path: "oldhome", component: OldHomeComponent },
 
@@ -164,7 +166,8 @@ const appRoutes: Routes = [
     BinarysortComponent,
     FeelingsCheckupComponent,
     OldHomeComponent,
-    FeelingsCheckupPt2Component
+    FeelingsCheckupPt2Component,
+    FeelingsFeedbackComponent
   ],
   bootstrap: [AppComponent],
   providers: [PeopleService, DataService],
