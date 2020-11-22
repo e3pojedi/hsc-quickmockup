@@ -1,0 +1,133 @@
+<h2 class="example-h2">Feelings Checkup</h2>
+
+<!--Boxes where questions are in-->
+
+<div class="display">
+  <strong>How calm are you feeling today? </strong><br />
+  {{this.formValues | json}}
+  <div fxLayout="row " fxLayoutGap="10px"></div>
+
+  <div fxLayout="row " fxLayoutGap="10px">
+    <form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-slider
+        formControlName="sliderValue"
+        disabled="false"
+        invert="false"
+        max="10"
+        min="1"
+        step="1"
+        thumbLabel="true"
+        tickInterval="1"
+        vertical="false"
+      >
+      </mat-slider>
+    </form>
+  </div>
+</div>
+
+<div class="display">
+  <strong>How clear are you feeling today? </strong><br />
+  {{this.formValues | json}}
+  <div fxLayout="row " fxLayoutGap="10px"></div>
+
+  <div fxLayout="row " fxLayoutGap="10px">
+    <form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-slider
+        formControlName="sliderValue"
+        class="example-margin"
+        disabled="false"
+        invert="false"
+        max="10"
+        min="1"
+        step="1"
+        thumbLabel="true"
+        tickInterval="1"
+        vertical="false"
+      >
+      </mat-slider>
+    </form>
+  </div>
+</div>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <!-- slider 1-->
+      <ng-template matStepLabel>How are you feeling?</ng-template>
+      <strong>How content are you feeling today? </strong><br />
+      {{this.formValues | json}}
+      <div fxLayout="row " fxLayoutGap="10px"></div>
+      <div fxLayout="row " fxLayoutGap="10px">
+        <form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <mat-slider
+            formControlName="sliderValue"
+            disabled="false"
+            invert="false"
+            max="10"
+            min="1"
+            step="1"
+            thumbLabel="true"
+            tickInterval="1"
+            vertical="false"
+          >
+          </mat-slider>
+
+          <div class="display">
+            <strong>How calm are you feeling today? </strong><br />
+            {{this.formValues | json}}
+            <div fxLayout="row " fxLayoutGap="10px"></div>
+
+            <div fxLayout="row " fxLayoutGap="10px">
+              <form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <mat-slider
+                  formControlName="sliderValue"
+                  disabled="false"
+                  invert="false"
+                  max="10"
+                  min="1"
+                  step="1"
+                  thumbLabel="true"
+                  tickInterval="1"
+                  vertical="false"
+                >
+                </mat-slider>
+              </form>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          formControlName="secondCtrl"
+          placeholder="Ex. 1 Main St, New York, NY"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<div class="register-but" routerLink="/oldhome" (click)="onSubmit()">
+  <button fxFlex mat-raised-button>submit</button>
+</div>
