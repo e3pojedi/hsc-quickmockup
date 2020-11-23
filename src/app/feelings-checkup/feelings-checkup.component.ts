@@ -94,11 +94,13 @@ isLinear = false;
       const value = event.value;
 
       // Add our fruit
+      
       if ((value || '').trim()) {
         this.fruits.push(value.trim());
       }
 
       // Reset the input value
+      
       if (input) {
         input.value = '';
       }
